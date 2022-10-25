@@ -9,10 +9,10 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  RESOURCE_GROUP_NAME="rgarctic01"
-  STORAGE_ACCOUNT_NAME="storagearctic01"
-  $CONTAINER_NAME="b2ctfstate"
-  KEY="terraform.tfstate"
+  rgname="rgarctic01"
+  saname="storagearctic01"
+  container="b2ctfstate"
+  key="terraform.tfstate"
 
 stages:
   - stage: tfvalidate
@@ -30,7 +30,7 @@ stages:
             provider: 'azurerm'
             command: 'init''
             backendServiceArm: 'arcticSPCONN'
-            backendAzureRmResourceGroupName: '$(RESOURCE_GROUP_NAME)'
-            backendAzureRmStorageAccountName: '$(STORAGE_ACCOUNT_NAME)'
-            backendAzureRmContainerName: '$(CONTAINER_NAME)'
-            backendAzureRmKey: '$(KEY)'="b2ctfstate"
+            backendAzureRmResourceGroupName: '$(rgname)'
+            backendAzureRmStorageAccountName: '$(saname)'
+            backendAzureRmContainerName: '$(container)'
+            backendAzureRmKey: '$(key)'
