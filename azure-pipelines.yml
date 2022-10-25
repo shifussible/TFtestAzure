@@ -1,0 +1,36 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  RESOURCE_GROUP_NAME="rgarctic01"
+  STORAGE_ACCOUNT_NAME="storagearctic01"
+  $CONTAINER_NAME="b2ctfstate"
+  KEY="terraform.tfstate"
+
+stages:
+  - stage: tfvalidate
+    jobs:
+    - job: validate
+      continueOnError: false
+      steps:
+        - task: TerraformInstaller@0
+          displayName: tfinstall
+          inputs:
+            terraformVersion: 'latest'
+        - task: TerraformTaskV3@3
+          displayName: init
+          inputs:
+            provider: 'azurerm'
+            command: 'init''
+            backendServiceArm: 'arcticSPCONN'
+            backendAzureRmResourceGroupName: '$(RESOURCE_GROUP_NAME)'
+            backendAzureRmStorageAccountName: '$(STORAGE_ACCOUNT_NAME)'
+            backendAzureRmContainerName: '$(CONTAINER_NAME)'
+            backendAzureRmKey: '$(KEY)'="b2ctfstate"
