@@ -28,8 +28,8 @@ stages:
           displayName: init
           inputs:
             provider: 'azurerm'
-            command: 'init''
-            backendServiceArm: 'arcticSPCONN'
+            command: 'init backendServiceArm:'
+            environmentServiceNameAzureRM: 'arcticSPCONN'
             backendAzureRmResourceGroupName: '$(rgname)'
             backendAzureRmStorageAccountName: '$(saname)'
             backendAzureRmContainerName: '$(container)'
