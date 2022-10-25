@@ -9,10 +9,10 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  rgname="rgarctic01"
-  saname="storagearctic01"
-  container="b2ctfstate"
-  key="terraform.tfstate"
+  rgname= "rgarctic01"
+  saname= "storagearctic01"
+  container= "b2ctfstate"
+  key= "terraform.tfstate"
 
 stages:
   - stage: tfvalidate
