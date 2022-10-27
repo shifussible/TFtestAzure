@@ -41,6 +41,5 @@ stages:
       steps:
         - task: TerraformInstaller@0
           displayName: tfinstall
-          environment: Prod
           inputs:
             terraformVersion: 'latest'
