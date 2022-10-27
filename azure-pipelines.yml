@@ -21,7 +21,6 @@ stages:
     jobs:
     - job: validate
       continueOnError: false
-      environment: dev
       steps:
         - task: TerraformInstaller@0
           displayName: tfinstall
@@ -37,3 +36,11 @@ stages:
             backendAzureRmStorageAccountName: '$(saname)'
             backendAzureRmContainerName: '$(container)'
             backendAzureRmKey: '$(key)'
+    - job: deploy2Prod
+      continueOnError: false
+      environment: Prod
+      steps:
+        - task: TerraformInstaller@0
+          displayName: tfinstall
+          inputs:
+            terraformVersion: 'latest'
