@@ -16,9 +16,12 @@ variables:
 
 stages:
   - stage: tfvalidate
+    displayName: validate Stage
+    dependsOn: []
     jobs:
     - job: validate
       continueOnError: false
+      environment: dev
       steps:
         - task: TerraformInstaller@0
           displayName: tfinstall
