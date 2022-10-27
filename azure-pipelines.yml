@@ -38,9 +38,9 @@ stages:
             backendAzureRmKey: '$(key)'
     - job: deploy2Prod
       continueOnError: false
-      environment: Prod
       steps:
         - task: TerraformInstaller@0
           displayName: tfinstall
+          environment: Prod
           inputs:
             terraformVersion: 'latest'
